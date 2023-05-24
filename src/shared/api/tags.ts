@@ -1,5 +1,5 @@
 export const tagTypes = {
-  SOURCES_TAG: "SEARCH_TAG",
+  SOURCES_TAG: "SOURCES_TAG",
   SESSION_TAG: 'SESSION_TAG'
 } as const;
 

@@ -9,3 +9,19 @@
   padding         : 1rem;
   border-radius   : 0.5rem;
 }
+
+.actions {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.smallColumn {
+  width: 210px;
+}
+
+.coordsColumn {
+  width: 100px;
+}

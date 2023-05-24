@@ -8,7 +8,3 @@ export type RequestLoginBody = {
   password: string
 }
 
-export type AdminDto = {
-  user_id: string
-  name: string
-}

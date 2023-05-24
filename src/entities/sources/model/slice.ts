@@ -1,13 +1,9 @@
-import {
-  type PayloadAction,
-  createSlice,
-  createSelector,
-} from '@reduxjs/toolkit'
 import { sourcesApi } from '../api/sourcesApi'
-import { AppState } from '@app/store'
 import { EnrichedSource } from './types'
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 type sourcesSliceState = {
+  search: string
   sources: EnrichedSource[]
   pagination: {
     page: number
@@ -17,6 +13,7 @@ type sourcesSliceState = {
 }
 
 const initialState: sourcesSliceState = {
+  search: "",
   sources: [],
   pagination: {
     page: 1,
@@ -30,11 +27,17 @@ export const sourcesSlice = createSlice({
   initialState,
   reducers: {
     // getSources: (state, action: PayloadAction<string>) => {
-
     //   state.sources[action.payload] = state.sources[action.payload] == false
     // },
     clearSourcesData: (state) => {
       state = initialState
+    },
+    searchSources: (state, { payload }: PayloadAction<string>) => {
+      state.search = payload
+      state.pagination.page = initialState.pagination.page
+    },
+    paginateSources: (state, { payload }: PayloadAction<number>) => {
+      state.pagination.page = payload
     }
   },
   extraReducers: (builder) => {
@@ -48,16 +51,8 @@ export const sourcesSlice = createSlice({
   },
 })
 
-
-// export const selectIsInWishlist = createSelector(
-//   (state: AppState) => state.sources.sources,
-//   (_: AppState, rssId: string) => rssId,
-//   (sources: Record<ProductId, boolean>, rssId: string): boolean => Boolean(sources[rssId])
-// )
-
-// export const selectProductIdsInWishlist = (state: AppState) =>
-//   Object.keys(state.wishlist.products)
-//     .filter(Boolean)
-//     .map(Number) as ProductId[]
-
-export const { clearSourcesData } = sourcesSlice.actions
+export const {
+  clearSourcesData,
+  searchSources,
+  paginateSources
+} = sourcesSlice.actions

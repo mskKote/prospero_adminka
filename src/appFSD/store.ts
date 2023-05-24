@@ -21,7 +21,7 @@ import { invalidateAccessTokenListener } from '@features/authentication/Invalida
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: [sessionSlice.name, debugModeSlice.name, sourcesSlice.name],
+  whitelist: [sessionSlice.name],
 }
 
 export function makeStore() {
@@ -35,7 +35,7 @@ export function makeStore() {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, debugModeSlice.name, sourcesSlice.name],
         },
       }).concat(baseApi.middleware, invalidateAccessTokenListener.middleware),
   })
