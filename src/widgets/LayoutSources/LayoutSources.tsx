@@ -3,6 +3,7 @@ import { useFeatureSlicedDebug } from '@shared/lib'
 import { SourcesTable } from '@entities/sources'
 import { useEnrichedSourcesQuery } from '@entities/sources'
 import { useAppSelector } from '@shared/model'
+import { AddSource } from '@features/sources'
 import classes from "./LayoutSources.module.scss"
 
 export const LayoutSources = () => {
@@ -15,8 +16,12 @@ export const LayoutSources = () => {
   const sources = sourcesResponse.currentData?.data ?? []
 
   return <section {...rootAttributes} className={classes.section}>
-    {/* Таблица источников */}
-    <SourcesTable sources={sources} />
+
+    <div className={classes.tableWrapper}>
+
+      <SourcesTable sources={sources} />
+      <AddSource />
+    </div>
 
   </section>
 }

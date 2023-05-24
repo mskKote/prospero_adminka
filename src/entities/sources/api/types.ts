@@ -46,8 +46,8 @@ export type AddEnrichSourceDTO = {
   name: string
   country: string
   city: string
-  longitude: string
-  latitude: string
+  longitude: number
+  latitude: number
   rss_url: string
 }
 export type AddRespDTO = {

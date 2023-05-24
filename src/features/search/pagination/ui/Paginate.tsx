@@ -8,7 +8,7 @@ export const Paginate = () => {
   const { rootAttributes } = useFeatureSlicedDebug('feature/LoginForm')
   const dispatch = useAppDispatch()
   const pagination = useAppSelector(({ sources }) => sources.pagination)
-  const totalPages = pagination.total / pagination.page_size
+  const totalPages = 1 + pagination.total / pagination.page_size
 
   function paginate(page: number) {
     console.log("Меняем страницу страницу", page)
@@ -20,7 +20,7 @@ export const Paginate = () => {
       {...rootAttributes}
       value={pagination.page}
       onChange={paginate}
-      total={totalPages < 3 ? 10 : totalPages}
+      total={totalPages}
       position="center"
       styles={(theme) => ({
         control: {

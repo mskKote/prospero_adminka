@@ -81,7 +81,7 @@ export const SourcesTable = (props: Props) => {
       <td className={classes.smallCol}>
         <Group position="center">
           {source.Source.rss_id !== editSource?.rss_id
-            // edit RSS
+            // EDIT
             ? <>
               <Button
                 className={classes.actions}
@@ -101,7 +101,7 @@ export const SourcesTable = (props: Props) => {
               </Button>
               <RemoveSourceBtn source={source} />
             </>
-            // feature: EDIT DONE 
+            // EDIT DONE 
             : <>
               <EditSourceBtn done={() => setEditSource(initial)} original={source} edited={{
                 Source: {
@@ -130,31 +130,23 @@ export const SourcesTable = (props: Props) => {
   ));
 
 
-  return <div {...rootAttributes} className={classes.tableWrapper}>
+  return <ScrollArea className={classes.table} {...rootAttributes}>
 
-    <ScrollArea>
-      <div className={classes.table}>
-
-        <Button>ADD+</Button>
-        <Table sx={{ minWidth: 800 }} verticalSpacing="xs">
-          <thead>
-            <tr>
-              <th>№</th>
-              <th>Источник</th>
-              <th>Страна</th>
-              <th>Город</th>
-              <th style={{ textAlign: "center" }}>Координаты</th>
-              <th style={{ textAlign: "center" }}>Ссылка</th>
-              <th style={{ textAlign: "center" }}>Действия</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* тест строка - вынести в новую? */}
-            {rows}
-          </tbody>
-        </Table>
-      </div>
-    </ScrollArea>
-
-  </div>
+    <Table sx={{ minWidth: 800 }} verticalSpacing="xs">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Источник</th>
+          <th>Страна</th>
+          <th>Город</th>
+          <th style={{ textAlign: "center" }}>Координаты</th>
+          <th style={{ textAlign: "center" }}>Ссылка</th>
+          <th style={{ textAlign: "center" }}>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows}
+      </tbody>
+    </Table>
+  </ScrollArea>
 }
