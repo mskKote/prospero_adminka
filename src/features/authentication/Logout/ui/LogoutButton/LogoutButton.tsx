@@ -10,6 +10,8 @@ export function LogoutButton() {
   const dispatch = useAppDispatch()
   const openModal = () => modals.openConfirmModal({
     title: "Вы уверены?",
+    yOffset: "30vh",
+    zIndex: 1202,
     onConfirm: () => {
       dispatch(logoutThunk())
     },
@@ -22,7 +24,7 @@ export function LogoutButton() {
     onCancel: () => console.log('Cancel'),
   })
 
-  const onConfirmLogout = (e: React.MouseEvent<HTMLElement>) => {
+  const onLogoutClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation()
     e.preventDefault()
     openModal()
@@ -32,7 +34,7 @@ export function LogoutButton() {
     <Button
       variant="gradient"
       gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
-      onClick={onConfirmLogout}>
+      onClick={onLogoutClick}>
       Выйти
     </Button>
   </div>

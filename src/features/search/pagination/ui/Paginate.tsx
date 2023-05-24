@@ -1,21 +1,26 @@
+import React from 'react'
+import { paginateSources } from '@entities/sources'
 import { Pagination } from '@mantine/core'
 import { useFeatureSlicedDebug } from '@shared/lib'
-import { useAppSelector } from '@shared/model'
-import React from 'react'
+import { useAppDispatch, useAppSelector } from '@shared/model'
 
-// TODO: вызвать поиск
 export const Paginate = () => {
   const { rootAttributes } = useFeatureSlicedDebug('feature/LoginForm')
-
+  const dispatch = useAppDispatch()
   const pagination = useAppSelector(({ sources }) => sources.pagination)
-  const totalPages = pagination.total / pagination.page_size
+  const totalPages = 1 + pagination.total / pagination.page_size
+
+  function paginate(page: number) {
+    console.log("Меняем страницу страницу", page)
+    dispatch(paginateSources(page))
+  }
 
   return (
     <Pagination
       {...rootAttributes}
-      defaultValue={pagination.page}
-      onChange={() => console.log("Сменили страницу")}
-      total={10}
+      value={pagination.page}
+      onChange={paginate}
+      total={totalPages}
       position="center"
       styles={(theme) => ({
         control: {

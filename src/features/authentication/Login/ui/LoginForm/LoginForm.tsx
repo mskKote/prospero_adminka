@@ -28,7 +28,6 @@ export function LoginForm(props: Props) {
 
   const onSubmitHandler = useCallback(
     ({ username, password }: LoginFormSchema) => {
-      console.log("Вызов onSubmitHandler");
       dispatch(loginThunk({ username, password }))
         .then(() => props.onComplete?.())
     }, [])

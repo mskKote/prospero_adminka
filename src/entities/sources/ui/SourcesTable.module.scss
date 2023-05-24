@@ -1,11 +1,25 @@
-.tableWrapper {
-  background-color: #f8f9fa;
-  padding         : 0.625rem 1rem;
-  height          : 100%;
-}
-
 .table {
   background-color: #fff;
   padding         : 1rem;
   border-radius   : 0.5rem;
+}
+
+.actions {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.smallCol {
+  min-width: max-content;
+  width    : 210px;
+
+  input:disabled {
+    color           : rgb(44, 44, 44);
+    opacity         : 1;
+    background-color: transparent;
+    border          : none;
+  }
 }
