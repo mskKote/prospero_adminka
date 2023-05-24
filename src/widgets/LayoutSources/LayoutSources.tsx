@@ -12,8 +12,6 @@ export const LayoutSources = () => {
     search: sourcesState.search,
     page: sourcesState.pagination.page
   })
-
-  console.log(sourcesResponse);
   const sources = sourcesResponse.currentData?.data ?? []
 
   return <section {...rootAttributes} className={classes.section}>

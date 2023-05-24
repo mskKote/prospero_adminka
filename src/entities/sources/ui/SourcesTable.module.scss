@@ -18,10 +18,14 @@
   }
 }
 
-.smallColumn {
-  width: 210px;
-}
+.smallCol {
+  min-width: max-content;
+  width    : 210px;
 
-.coordsColumn {
-  width: 100px;
+  input:disabled {
+    color           : rgb(44, 44, 44);
+    opacity         : 1;
+    background-color: transparent;
+    border          : none;
+  }
 }

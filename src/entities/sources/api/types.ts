@@ -14,23 +14,42 @@ export type GetEnrichSourcesArgsDTO = {
   page?: number
 }
 
-// 
+
 export type RemoveSourceDTO = {
   message: string
 }
-
 export type RemoveSourceArgsDTO = {
   rss_id: string
 }
 
 
-
+export type UpdateRespDTO = {
+  message: string
+}
 export type UpdateSourceDTO = {
   rss_id: string
   rss_url: string
   publisher_id: string
 }
-
-export type DeletePublisherDTO = {
+export type UpdatePulblisherDTO = {
   publisher_id: string
+  add_date: Date
+  name: string
+  country: string
+  city: string
+  longitude: number
+  latitude: number
+}
+
+
+export type AddEnrichSourceDTO = {
+  name: string
+  country: string
+  city: string
+  longitude: string
+  latitude: string
+  rss_url: string
+}
+export type AddRespDTO = {
+  message: string
 }

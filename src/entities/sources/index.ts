@@ -8,5 +8,8 @@ export {
 export {
   sourcesApi,
   useEnrichedSourcesQuery,
-  useRemoveSourceMutation
+  useRemoveSourceMutation,
+  useUpdatePublisherMutation,
+  useUpdateSourceMutation,
+  useAddSourceAndPublisherMutation
 } from './api/sourcesApi'

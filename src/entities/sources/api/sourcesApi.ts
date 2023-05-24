@@ -2,6 +2,8 @@ import { baseApi, tagTypes, methodTypes } from '@shared/api'
 import {
   GetEnrichSourcesDTO, GetEnrichSourcesArgsDTO,
   RemoveSourceArgsDTO, RemoveSourceDTO,
+  UpdateRespDTO, UpdateSourceDTO, UpdatePulblisherDTO,
+  AddRespDTO, AddEnrichSourceDTO
 } from './types'
 
 export const sourcesApi = baseApi.injectEndpoints({
@@ -12,12 +14,6 @@ export const sourcesApi = baseApi.injectEndpoints({
       }),
       providesTags: [tagTypes.SOURCES_TAG]
     }),
-    // searchSources: build.mutation<GetEnrichSourcesDTO, GetEnrichSourcesArgsDTO>({
-    //   query: ({ search, page }) => ({
-    //     url: `/api/v1/RSS/getEnrichedSources?page=${page ?? 1}${search === "" ? "" : `&search=${search}`}`,
-    //   }),
-    //   invalidatesTags: [tagTypes.SOURCES_TAG]
-    // }),
     removeSource: build.mutation<RemoveSourceDTO, RemoveSourceArgsDTO>({
       query: (body) => ({
         url: `/api/v1/RSS/removeSource`,
@@ -25,12 +21,38 @@ export const sourcesApi = baseApi.injectEndpoints({
         body
       }),
       invalidatesTags: [tagTypes.SOURCES_TAG]
+    }),
+    updateSource: build.mutation<UpdateRespDTO, UpdateSourceDTO>({
+      query: (body) => ({
+        url: `/api/v1/RSS/updateSource`,
+        method: methodTypes.PUT,
+        body
+      }),
+      invalidatesTags: [tagTypes.SOURCES_TAG]
+    }),
+    updatePublisher: build.mutation<UpdateRespDTO, UpdatePulblisherDTO>({
+      query: (body) => ({
+        url: `/api/v1/updatePublisher`,
+        method: methodTypes.PUT,
+        body
+      }),
+      invalidatesTags: [tagTypes.SOURCES_TAG]
+    }),
+    addSourceAndPublisher: build.mutation<AddRespDTO, AddEnrichSourceDTO>({
+      query: (body) => ({
+        url: `/api/v1/addSourceAndPublisher`,
+        method: methodTypes.POST,
+        body
+      }),
+      invalidatesTags: [tagTypes.SOURCES_TAG]
     })
-    //TODO: edit, add
   }),
 })
 
 export const {
   useEnrichedSourcesQuery,
-  useRemoveSourceMutation
+  useRemoveSourceMutation,
+  useUpdatePublisherMutation,
+  useUpdateSourceMutation,
+  useAddSourceAndPublisherMutation
 } = sourcesApi
